@@ -7,7 +7,7 @@ node {
     sh "node -v"
     sh "npm -v"
     sh "bower -v"
-    //sh "grunt -v"
+    sh "grunt -v"
 
     stage 'Cassandra'
     sh "docker-compose -f /src/main/docker/cassandra.yml up -d"
