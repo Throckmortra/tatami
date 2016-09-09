@@ -9,8 +9,8 @@ node {
     sh "bower -v"
     //sh "grunt -v"
 
-    stage 'Cassandra'
-    sh "docker-compose -f /workspace/src/main/docker/cassandra.yml up -d"
+    // stage 'Cassandra'
+    // sh "docker-compose -f /workspace/src/main/docker/cassandra.yml up -d"
     
     stage 'checkout'
     checkout scm
