@@ -10,7 +10,7 @@ node {
     //sh "grunt -v"
 
     stage 'Cassandra'
-    sh "docker-compose -f src/main/docker/cassandra.yml up -d"
+    sh "docker-compose -f /src/main/docker/cassandra.yml up -d"
     
     stage 'checkout'
     checkout scm
