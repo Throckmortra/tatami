@@ -31,4 +31,7 @@ node('tatami') {
 
     stage 'packaging'
     sh "./mvnw package -Pprod -DskipTests"
+    
+    stage 'deploy'
+    sh "java -jar target/*.war --spring.profiles.active=prod"
 }
