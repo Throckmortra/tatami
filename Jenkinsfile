@@ -33,5 +33,5 @@ node('tatami') {
     sh "./mvnw package -Pprod -DskipTests"
     
     stage 'deploy'
-    sh "java -jar target/*.war --spring.profiles.active=prod"
+    sh "nohub java -jar target/*.war --spring.profiles.active=prod &"
 }
