@@ -17,6 +17,7 @@ node('tatami') {
 
     stage 'npm install'
     sh "npm install"
+    sh "npm update"
     
     stage 'clean'
     sh "./mvnw clean"
