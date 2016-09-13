@@ -7,10 +7,6 @@ node('tatami') {
     sh "node -v"
     sh "npm -v"
     sh "bower -v"
-    //sh "grunt -v"
-
-    // stage 'Cassandra'
-    // sh "docker-compose -f /workspace/src/main/docker/cassandra.yml up -d"
     
     stage 'checkout'
     checkout scm
@@ -33,5 +29,5 @@ node('tatami') {
     sh "./mvnw package -Pprod -DskipTests"
     
     stage 'deploy'
-    sh "nohub java -jar target/*.war --spring.profiles.active=prod &"
+    sh "cp /target/*.war.original /var/lib/tomcat8/webapps/ROOT.war"
 }
