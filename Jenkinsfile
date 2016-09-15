@@ -27,7 +27,7 @@ node('tatami') {
     sh "grunt test"
 
     stage 'packaging'
-    sh "./mvnw package -Pdev -DskipTests"
+    sh "./mvnw package -Pprod -DskipTests"
     
     stage 'deploy'
     sh "cp target/*.war.original /var/lib/tomcat7/webapps/ROOT.war"
