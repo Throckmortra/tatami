@@ -17,15 +17,6 @@ node('tatami') {
     sh "npm update"
     sh "npm install -g grunt-cli"
     
-    state 'cassandra'
-    vars.CCM_UP = sh (
-        script: 'ccm status | grep DOWN'',
-        returnStdout: true
-    ).trim()
-    if (${vars.CCM_UP=='node1: DOWN'}){
-        sh "ccm start"
-    }
-    
     stage 'clean'
     sh "./mvnw clean"
 
