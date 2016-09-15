@@ -18,7 +18,7 @@ node('tatami') {
     sh "npm install -g grunt-cli"
     
     stage 'clean'
-    sh "./mvnw clean"
+    sh "./mvnw -Pprod clean package"
 
     stage 'backend tests'
     sh "./mvnw test"
@@ -26,8 +26,8 @@ node('tatami') {
     stage 'frontend tests'
     sh "grunt test"
 
-    stage 'packaging'
-    sh "./mvnw package -Pprod -DskipTests"
+    // stage 'packaging'
+    // sh "./mvnw package -Pprod -DskipTests"
     
     stage 'deploy'
     sh "cp target/*.war.original /var/lib/tomcat7/webapps/ROOT.war"
