@@ -30,5 +30,5 @@ node('tatami') {
     sh "./mvnw package -Pprod -DskipTests"
     
     stage 'deploy'
-    sh "cp target/*.war.original /var/lib/tomcat8/webapps/ROOT.war"
+    sh "cp target/*.war.original /var/lib/tomcat7/webapps/ROOT.war"
 }
