@@ -31,4 +31,5 @@ node('tatami') {
     
     stage 'deploy'
     sh "cp target/*.war.original /var/lib/tomcat7/webapps/ROOT.war"
+    sh "service tomcat7 restart"
 }
