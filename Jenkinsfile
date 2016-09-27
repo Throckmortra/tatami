@@ -26,8 +26,8 @@ node('tatami') {
     stage 'frontend tests'
     sh "grunt test"
 
-    // stage 'packaging'
-    // sh "./mvnw package -Pprod -DskipTests"
+    stage 'sonar analysis'
+    sh "sudo ./mvnw sonar:sonar -Dsonar.host.url=http://ec2-54-227-14-218.compute-1.amazonaws.com/sonar"
     
     stage 'deploy'
     sh "cp target/*.war.original /var/lib/tomcat7/webapps/ROOT.war"
