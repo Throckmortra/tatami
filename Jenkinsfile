@@ -17,8 +17,8 @@ node('tatami') {
     sh "npm update"
     sh "npm install -g grunt-cli"
     
-    stage 'clean'
-    sh "./mvnw -Pprod clean package"
+    stage 'package'
+    sh "./mvnw -Pprod clean package -DskipTests"
 
     stage 'backend tests'
     sh "./mvnw test"
