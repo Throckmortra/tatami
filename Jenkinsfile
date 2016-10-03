@@ -17,14 +17,17 @@ node('tatami') {
     sh "npm update"
     sh "npm install -g grunt-cli"
     
-    stage 'package'
-    sh "./mvnw -Pprod clean package -DskipTests"
-
+    stage 'clean'
+    sh "./mvnw clean"
+    
     stage 'backend tests'
     sh "./mvnw test"
 
     stage 'frontend tests'
     sh "grunt test"
+    
+    stage 'package'
+    sh "./mvnw -Pprod package -DskipTests"
 
     stage 'sonar analysis'
     sh "sudo ./mvnw sonar:sonar -Dsonar.host.url=http://ec2-54-227-14-218.compute-1.amazonaws.com/sonar"
